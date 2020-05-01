@@ -1,0 +1,44 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  name: String!
+  email: String!
+  role: Role!
+}
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+type AccessToken {
+  access_token: String!
+}
+
+type Query {
+  findUsers: [User!]!
+  findById(id: String!): User!
+}
+
+type Mutation {
+  login(input: LoginInput!): AccessToken!
+  createUser(user: SignUpInput!): User!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input SignUpInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+type Subscription {
+  userCreated: User!
+}
