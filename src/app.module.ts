@@ -11,7 +11,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     GraphQLModule.forRoot({
       autoSchemaFile:'schema.gql',
       installSubscriptionHandlers: true,
-      context: ({ req, connection }) => connection ? { req: { headers: connection.context } } : { req },      }),
+      context: ({ req, connection }) => connection ?
+       {
+         req:
+
+         
+           {
+             headers:{
+               authorization:connection.context["Authorization"]
+               ?connection.context["Authorization"]
+               :connection.context["authorization"]}
+            }
+        }:{req}
+    }),
     AuthModule,
     UsersModule,
   ],

@@ -16,7 +16,8 @@ export class GqlAuthGuard extends AuthGuard('jwt'){
        /* const data = (connection && connection.context && connection.context.headers)
         ? connection.context
         : req;*/
-        console.log("Data :",req); 
+    
+        console.log("Data :",req.headers); 
         // if subscriptions/webSockets, let it pass headers from connection.context to passport-jwt
         return req;
       }
